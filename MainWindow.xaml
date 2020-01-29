@@ -1,0 +1,22 @@
+﻿<Window x:Class="Herbs.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Herbs"
+        mc:Ignorable="d"
+        Title="Herbs" Height="450" Width="580">
+    <Grid HorizontalAlignment="Left" Width="580">
+        <StackPanel>
+            <ListView ItemsSource="{Binding Apps}">
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem></MenuItem>
+                        <MenuItem></MenuItem>
+                        <MenuItem></MenuItem>
+                    </ContextMenu>
+                </ListView.ContextMenu>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Window>
