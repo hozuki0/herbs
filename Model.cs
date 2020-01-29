@@ -11,7 +11,7 @@ using Reactive.Bindings;
 
 namespace Herbs
 {
-    public class Model : BindableBase
+    public class Model : BindableBase, IDisposable
     {
         private ReactiveCollection<ApplicationInfo> apps = new ReactiveCollection<ApplicationInfo>();
 
@@ -31,6 +31,14 @@ namespace Herbs
                                                     .Where(n => n.MainWindowHandle != IntPtr.Zero)
                                                     .Where(n => n.MainModule.ModuleName != Process.GetCurrentProcess().MainModule.ModuleName)
                                                     .Select(n => new ApplicationInfo(n)));
+        }
+
+        public void Dispose()
+        {
+            foreach (var item in apps)
+            {
+                if (item.WindowState != WindowState.Normal) item.WindowState = WindowState.Normal;
+            }
         }
     }
 }

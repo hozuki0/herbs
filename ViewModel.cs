@@ -45,6 +45,8 @@ namespace Herbs
                     Selected.Value.WindowState = WindowState.Normal;
                 }
             }).AddTo(disposables);
+
+            model.AddTo(disposables);
         }
 
         public void Dispose()
