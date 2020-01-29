@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -23,6 +24,30 @@ namespace Herbs
         public MainWindow()
         {
             InitializeComponent();
+
+            this.DataContext = new ViewModel();
+
+            this.Closed += (_, __) => (this.DataContext as ViewModel).Dispose(); 
+        }
+
+        private void OnTopChecked(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as ViewModel).OnTopChecked.Execute();
+        }
+
+        private void OnNormalChecked(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as ViewModel).OnNormalChecked.Execute();
+        }
+
+        private void OnGotFocus(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as ViewModel).OnGotFocus.Execute();
+        }
+
+        private void OnActivated(object sender, EventArgs e)
+        {
+            (this.DataContext as ViewModel).OnGotFocus.Execute();
         }
     }
 }

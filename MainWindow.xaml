@@ -5,18 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Herbs"
         mc:Ignorable="d"
-        Title="Herbs" Height="450" Width="580">
-    <Grid HorizontalAlignment="Left" Width="580">
-        <StackPanel>
-            <ListView ItemsSource="{Binding Apps}">
-                <ListView.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem></MenuItem>
-                        <MenuItem></MenuItem>
-                        <MenuItem></MenuItem>
-                    </ContextMenu>
-                </ListView.ContextMenu>
-            </ListView>
-        </StackPanel>
+        Title="Herbs" Height="450" Width="580"
+        Activated="OnActivated"
+        Icon="/Herbs;component/resource/icon.ico">
+    <Grid>
+        <ListView ItemsSource="{Binding Apps}" 
+                  SelectedItem="{Binding Selected.Value}">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Top" 
+                                  Click="OnTopChecked"
+                                  ToolTip="最前面に固定する"/>
+                    <MenuItem Header="Normal" 
+                                  Click="OnNormalChecked"
+                                  ToolTip="通常状態"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding IconImage}"/>
+                        <Label Content="{Binding Header}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>
